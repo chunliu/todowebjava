@@ -1,0 +1,30 @@
+{
+    "run": {
+        "default": "",
+        "items": [
+            {
+                "name": "todowebjava",
+                "projectName": "todowebjava",
+                "workingDirectory": "c:\\Users\\chunliu\\github\\todowebjava",
+                "args": [],
+                "vmargs": [],
+                "env": {},
+                "preLaunchTask": ""
+            }
+        ]
+    },
+    "debug": {
+        "default": "",
+        "items": [
+            {
+                "name": "todowebjava",
+                "projectName": "todowebjava",
+                "workingDirectory": "c:\\Users\\chunliu\\github\\todowebjava",
+                "args": [],
+                "vmargs": [],
+                "env": {},
+                "preLaunchTask": ""
+            }
+        ]
+    }
+}
