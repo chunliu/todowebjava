@@ -1,0 +1,47 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: javawebdemo
+  namespace: javademo
+spec:
+  selector:
+    matchLabels:
+      app: javawebdemo
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: javawebdemo
+        aadpodidbinding: <aad pod identity binding>
+    spec:
+      containers:
+      - name: javawebdemo
+        image: ghcr.io/chunliu/todowebjava:v0.1.0
+        resources:
+          limits:
+            memory: "512Mi"
+            cpu: "500m"
+          requests:
+            memory: "256Mi"
+            cpu: "300m"
+        ports:
+        - containerPort: 8080
+          name: http
+          protocol: TCP
+        env:
+          - name: KEYVAULT_URL
+            value: <key vault url>
+          - name: MANAGEDIDENTITY_CLIENTID
+            value: <managed identity client id>
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: javawebdemo
+  namespace: javademo
+spec:
+  selector:
+    app: javawebdemo
+  ports:
+  - port: 80
+    targetPort: 8080
